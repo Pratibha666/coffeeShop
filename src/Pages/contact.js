@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Button from '../componets/Button';
-
+import './contact.css'; 
 const ContactContainer = styled.div`
   padding: 4rem 2rem;
   max-width: 800px;
@@ -13,6 +13,8 @@ const Title = styled(motion.h1)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
+  text-shadow: 2px 2px 4px black;
+  font-weight: bold;
 `;
 
 const Form = styled(motion.form)`
@@ -24,16 +26,26 @@ const Form = styled(motion.form)`
 const Input = styled.input`
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 4px;
+  outline:none;
+   &:focus {
+    border-color: #a52c19; // Change border color when focused
+    box-shadow: 0 0 3px black; // Add a subtle glow
+  }
 `;
 
 const TextArea = styled.textarea`
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 4px;
   min-height: 150px;
+  outline: none;
+  &:focus {
+    border-color: #a52c19; // Change border color when focused
+    box-shadow: 0 0 3px black; // Add a subtle glow
+  }
 `;
 
 function Contact() {
@@ -59,9 +71,9 @@ function Contact() {
   };
 
   return (
-    <ContactContainer>
+    <ContactContainer className='container'>
       <Title
-        className = "mt-7"
+        className = "mt-12"//corrected margin top
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -73,6 +85,7 @@ function Contact() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
+        className='form'
       >
         <Input
           type="text"
@@ -81,7 +94,9 @@ function Contact() {
           value={formData.name}
           onChange={handleChange}
           required
-          pattern="[a-zA-Z\s]+" title="Name must only contain letters"
+          pattern="[a-zA-Z\s]+" 
+          title="Name must only contain letters"
+          className='input-hover'
         />
         <Input
           type="email"
@@ -90,6 +105,7 @@ function Contact() {
           value={formData.email}
           onChange={handleChange}
           required
+          className='input-hover'
         />
         <TextArea
           name="message"
@@ -97,8 +113,9 @@ function Contact() {
           value={formData.message}
           onChange={handleChange}
           required
+          className='input-hover'
         />
-        <Button primary type="submit">Send Message</Button>
+        <Button primary type="submit" className='button-hover'>Send Message</Button>
       </Form>
     </ContactContainer>
   );

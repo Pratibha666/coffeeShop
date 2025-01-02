@@ -9,13 +9,14 @@ const StyledButton = styled(motion.button)`
   background-color: ${props => props.primary ? '#7c2214' : '#7c2214'};
   color: ${props => props.primary ? 'white' : 'white'};
   border: 2px solid #7c2214;
-  border-radius: 4px;
+  border-radius: 120px;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: ${props => props.primary ? '#7c2214' : 'white'};
-    color: ${props => props.primary ? 'white' : '#7c2214'}
+    background-color: ${props => props.primary ? '#a03626' : 'white'};
+    color: ${props => props.primary ? 'white' : '#7c2214'};
+    text-shadow: 2px 2px 4px black;
   }
 `;
 
